@@ -1,6 +1,6 @@
 # lita-dice
 
-TODO: Add a description of the plugin.
+**lita-dice** is a handler for [Lita](https://github.com/jimmycuadra/lita) that simulates dice rolls.
 
 ## Installation
 
@@ -10,13 +10,13 @@ Add lita-dice to your Lita instance's Gemfile:
 gem "lita-dice"
 ```
 
-## Configuration
-
-TODO: Describe any configuration attributes the plugin exposes.
-
 ## Usage
 
-TODO: Describe the plugin's features and how to use them.
+To roll a die:
+
+```
+Lita: roll
+```
 
 ## License
 
