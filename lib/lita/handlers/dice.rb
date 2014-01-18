@@ -6,7 +6,7 @@ module Lita
       route %r{roll}i, :roll, command: true, help: {'roll' => 'Roll one die'}
 
       def roll(response)
-        response.reply (1..6).to_a.sample
+        response.reply (1..6).to_a.sample.to_s
       end
     end
 
