@@ -5,8 +5,8 @@ describe Lita::Handlers::Dice, lita_handler: true do
 
   describe "#roll" do
     it "replies with a random number from 1 to 6" do
-      send_message "roll"
-      expect(replies).to include((1..6).to_a.sample.to_s)
+      send_command "roll"
+      expect("1".."6").to include(replies.first)
     end
   end
 end
