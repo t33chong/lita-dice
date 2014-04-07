@@ -14,7 +14,7 @@ module Lita
         if x > 20
           return
         end
-        s = ''
+        s = response.user.id + ' rolled '
         (1..x).each do |n|
           s += (1..6).to_a.sample.to_s + ' '
         end
@@ -22,7 +22,9 @@ module Lita
       end
 
       def roll(response)
-        response.reply (1..6).to_a.sample.to_s
+        s = response.user.id + ' rolled '
+        s += (1..6).to_a.sample.to_s
+        response.reply s
       end
     end
 
