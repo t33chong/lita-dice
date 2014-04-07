@@ -3,16 +3,34 @@ require "lita"
 module Lita
   module Handlers
     class Dice < Handler
+      route(/^roll\s+(\d+)d(\d+)/i, :rollxdy, command: true, help: {
+        'roll XdY' => 'Roll X Y-sided dice'})
+
       route(/^roll\s+(\d+)/i, :rollx, command: true, help: {
-        'roll X' => 'Roll X dice'})
+        'roll X' => 'Roll X 6-sided dice'})
 
       route(/^roll\s+[^\d]/i, :roll, command: true, help: {
-        'roll' => 'Roll one die'})
+        'roll' => 'Roll one 6-sided die'})
+
+      def rollxdy(response)
+        x, y = response.matches.first
+        x = x.to_i
+        y = y.to_i
+        if x > 20 or x < 1 or y > 20 or y < 1
+          s = 'Number of dice and number of sides must be between 1 and 20.'
+        else
+          s = response.user.name + ' rolled '
+          (1..x).each do |n|
+            s += (1..y).to_a.sample.to_s + ' '
+          end
+        end
+        response.reply s
+      end
 
       def rollx(response)
         x = response.matches.first.first.to_i
-        if x > 20
-          s = 'You cannot roll more than 20 dice at a time.'
+        if x > 20 or x < 1
+          s = 'You can only roll between 1 and 20 dice.'
         else
           s = response.user.name + ' rolled '
           (1..x).each do |n|
