@@ -6,7 +6,7 @@ module Lita
       route(/^roll\s+(\d+)d(\d+)/i, :rollxdy, command: true, help: {
         'roll XdY' => 'Roll X Y-sided dice'})
 
-      route(/^roll\s+(\d+)/i, :rollx, command: true, help: {
+      route(/^roll\s+(\d+)$/i, :rollx, command: true, help: {
         'roll X' => 'Roll X 6-sided dice'})
 
       route(/^roll\s+[^\d]/i, :roll, command: true, help: {
