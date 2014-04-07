@@ -16,8 +16,8 @@ module Lita
         x, y = response.matches.first
         x = x.to_i
         y = y.to_i
-        if x > 20 or x < 1 or y > 20 or y < 1
-          s = 'Number of dice and number of sides must be between 1 and 20.'
+        if x > 20 or x < 1
+          s = 'You can only roll between 1 and 20 dice.'
         else
           s = response.user.name + ' rolled '
           (1..x).each do |n|
