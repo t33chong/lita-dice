@@ -16,7 +16,7 @@ module Lita
           n.to_i
         end
 
-        x, y = response.matches
+        x, y = response.matches.first
         x = int.call(x, 1)
         y = int.call(y, 6)
 
