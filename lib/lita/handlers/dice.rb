@@ -4,9 +4,9 @@ module Lita
   module Handlers
     class Dice < Handler
       route(/^roll(\s+(?<x>\d+)?d?(?<y>\d+)?)?/i, :roll, command: true, help: {
-        'roll' => 'Roll one 6-sided die',
-        'roll X' => 'Roll X 6-sided dice',
-        'roll XdY' => 'Roll X Y-sided dice'})
+        'roll' => 'Roll one 6-sided die.',
+        'roll X' => 'Roll X 6-sided dice.',
+        'roll XdY' => 'Roll X Y-sided dice.'})
 
       def roll(response)
         int = lambda do |n, default|
