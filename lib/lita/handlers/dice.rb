@@ -34,8 +34,8 @@ module Lita
             total = rolls.inject(:+)
             s += " (#{total})"
           end
-        response.reply s
         end
+        response.reply s
       end
     end
 
