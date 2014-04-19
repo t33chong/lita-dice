@@ -21,9 +21,9 @@ module Lita
         y = int.call(y, 6)
 
         if x > 20 or x < 1
-          s = 'You can only roll between 1 and 20 dice.'
+          s = "#{response.user.name}: You can only roll between 1 and 20 dice."
         elsif y > 1000 or y < 2
-          s = 'Dice must have between 2 and 1000 sides.'
+          s = "#{response.user.name}: Dice must have between 2 and 1000 sides."
         else
           rolls = []
           (1..x).each do |n|
