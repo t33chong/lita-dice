@@ -45,11 +45,20 @@ describe Lita::Handlers::Dice, lita_handler: true do
       expect(a + b).to equal(total)
     end
 
-    it "does not allow more than 20 dice" do
-      send_command "roll 21"
+    it "restricts the number of dice between 1 and 20" do
       re = /#{user.name}: You can only roll between 1 and 20 dice\./
+      send_command "roll 0"
+      expect(replies.first).to match(re)
+      send_command "roll 21d10"
       expect(replies.first).to match(re)
     end
 
+    it "restricts the number of sides between 2 and 1000" do
+      re = /#{user.name}: Dice must have between 2 and 1000 sides\./
+      send_command "roll d1"
+      expect(replies.first).to match(re)
+      send_command "roll 10d1001"
+      expect(replies.first).to match(re)
+    end
   end
 end
