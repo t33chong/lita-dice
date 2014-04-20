@@ -4,17 +4,24 @@ describe Lita::Handlers::Dice, lita_handler: true do
   it { routes_command("roll").to(:roll) }
 
   describe "#roll" do
-    #it "replies with a random number from 1 to 6" do
-    #  send_command "roll"
-    #  expect("1".."6").to include(replies.first)
-    #end
+    it "handles roll as roll 1d6" do
+      send_command "roll"
+      re = /#{user.name} rolled (\d+)/
+      expect(replies.first).to match(re)
+      capt = re.match(replies.first).captures
+      value = capt.first.to_i
+      expect(1..6).to include(value)
+    end
 
-    it "replies with the specified number of rolls and the correct total" do
+    it "handles roll X as roll Xd6" do
       send_command "roll 3"
-      re = /#{user.name} rolled ([1-6]) ([1-6]) ([1-6]) \((\d+)\)/
+      re = /#{user.name} rolled (\d+) (\d+) (\d+) \((\d+)\)/
       expect(replies.first).to match(re)
       capt = re.match(replies.first).captures
       a, b, c, total = capt.map { |n| n.to_i }
+      expect(1..6).to include(a)
+      expect(1..6).to include(b)
+      expect(1..6).to include(c)
       expect(a + b + c).to equal(total)
     end
   end
