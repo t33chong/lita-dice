@@ -7,6 +7,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{A Lita handler that allows you to roll virtual dice.}
   spec.homepage      = "https://github.com/tristaneuan/lita-dice"
   spec.license       = "MIT"
+  spec.metadata      = { "lita_plugin_type" => "handler" }
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
