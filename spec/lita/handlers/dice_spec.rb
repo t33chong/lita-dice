@@ -33,5 +33,16 @@ describe Lita::Handlers::Dice, lita_handler: true do
       value = capt.first.to_i
       expect(1..20).to include(value)
     end
+
+    it "handles roll XdY with the correct values and total" do
+      send_command "roll 2d10"
+      re = /#{user.name} rolled (\d+) (\d+) \((\d+)\)/
+      expect(replies.first).to match(re)
+      capt = re.match(replies.first).captures
+      a, b, total = capt.map { |n| n.to_i }
+      expect(1..10).to include(a)
+      expect(1..10).to include(b)
+      expect(a + b).to equal(total)
+    end
   end
 end
