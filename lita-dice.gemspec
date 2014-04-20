@@ -3,8 +3,8 @@ Gem::Specification.new do |spec|
   spec.version       = "0.0.1"
   spec.authors       = ["Tristan Chong"]
   spec.email         = ["tristanchong@gmail.com"]
-  spec.description   = %q{A Lita handler for simulating dice rolls.}
-  spec.summary       = %q{A Lita handler for simulating dice rolls.}
+  spec.description   = %q{A Lita handler that allows you to roll virtual dice.}
+  spec.summary       = %q{A Lita handler that allows you to roll virtual dice.}
   spec.homepage      = "https://github.com/tristaneuan/lita-dice"
   spec.license       = "MIT"
 
