@@ -44,5 +44,12 @@ describe Lita::Handlers::Dice, lita_handler: true do
       expect(1..10).to include(b)
       expect(a + b).to equal(total)
     end
+
+    it "does not allow more than 20 dice" do
+      send_command "roll 21"
+      re = /#{user.name}: You can only roll between 1 and 20 dice\./
+      expect(replies.first).to match(re)
+    end
+
   end
 end
