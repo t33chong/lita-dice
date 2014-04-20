@@ -24,5 +24,14 @@ describe Lita::Handlers::Dice, lita_handler: true do
       expect(1..6).to include(c)
       expect(a + b + c).to equal(total)
     end
+
+    it "handles roll dY as roll 1dY" do
+      send_command "roll d20"
+      re = /#{user.name} rolled (\d+)/
+      expect(replies.first).to match(re)
+      capt = re.match(replies.first).captures
+      value = capt.first.to_i
+      expect(1..20).to include(value)
+    end
   end
 end
